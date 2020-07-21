@@ -15,7 +15,7 @@ public class FileServerManager {
 
     public static List<FileInfo> getFileList() throws IOException {
 
-        Path path = Paths.get("./", Directories.SERVER_FILES_DIRECTORY.getPath());
+        Path path = Paths.get(Directories.SERVER_FILES_DIRECTORY.getPath());
         return Files.list(path).map(FileInfo::new).collect(Collectors.toList());
 
     }
