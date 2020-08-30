@@ -1,6 +1,10 @@
 package DataBase;
 
+import org.springframework.stereotype.Component;
+
 import java.sql.*;
+
+
 
 public class DBHelper {
 

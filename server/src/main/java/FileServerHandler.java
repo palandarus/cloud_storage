@@ -17,6 +17,7 @@
 import DataBase.DBHelper;
 import DataBase.User;
 import io.netty.channel.*;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -29,6 +30,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
+
 
 public class FileServerHandler extends ChannelInboundHandlerAdapter {
     private static final String SERVER_ROOT_PATH = Directories.SERVER_FILES_DIRECTORY.getPath();

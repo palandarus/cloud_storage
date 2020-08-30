@@ -40,10 +40,14 @@ import io.netty.handler.stream.ChunkedWriteHandler;
 import io.netty.util.CharsetUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * Server that accept the path of a file an echo back its content.
  */
+
+
 public final class FileServer {
 
 
@@ -51,9 +55,17 @@ public final class FileServer {
 
     static final int PORT = Integer.parseInt(System.getProperty("port", NONSSLPORT));
 
-    private static DBHelper dbHelper=DBHelper.getInstance();
+    public FileServerHandler fileServerHandler;
 
-    public static void main(String[] args) throws Exception {
+    private DBHelper dbHelper;
+
+    public FileServer(DBHelper dbHelper, FileServerHandler fileServerHandler) {
+        this.dbHelper=dbHelper;
+        this.fileServerHandler=fileServerHandler;
+        init();
+    }
+
+    public void init() {
 
         dbHelper.connect();
         EventLoopGroup bossGroup = new NioEventLoopGroup();
@@ -61,7 +73,7 @@ public final class FileServer {
 
         try {
             ServerBootstrap b = new ServerBootstrap();
-            FileServerHandler fileServerHandler=new FileServerHandler(dbHelper);
+
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .handler(new LoggingHandler())
