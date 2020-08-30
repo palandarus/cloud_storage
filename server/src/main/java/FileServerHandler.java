@@ -17,6 +17,7 @@
 import DataBase.DBHelper;
 import DataBase.User;
 import io.netty.channel.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -31,11 +32,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@Component
 public class FileServerHandler extends ChannelInboundHandlerAdapter {
     private static final String SERVER_ROOT_PATH = Directories.SERVER_FILES_DIRECTORY.getPath();
     private static final String SERVER_TEMP_PATH = Directories.SERVER_TEMP_PATH.getPath();
     private boolean fileReceived = false;
+    @Autowired
     DBHelper dbHelper;
     private static HashMap<Long, Channel> usersMap=new HashMap<>();
 

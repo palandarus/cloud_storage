@@ -51,17 +51,17 @@ import org.springframework.stereotype.Component;
 public final class FileServer {
 
 
-    private static final String NONSSLPORT="8023";
+    private static final String NONSSLPORT = "8023";
 
     static final int PORT = Integer.parseInt(System.getProperty("port", NONSSLPORT));
-
+    @Autowired
     public FileServerHandler fileServerHandler;
-
+    @Autowired
     private DBHelper dbHelper;
 
     public FileServer(DBHelper dbHelper, FileServerHandler fileServerHandler) {
-        this.dbHelper=dbHelper;
-        this.fileServerHandler=fileServerHandler;
+        this.dbHelper = dbHelper;
+        this.fileServerHandler = fileServerHandler;
         init();
     }
 
@@ -91,10 +91,9 @@ public final class FileServer {
 
             // Wait until the server socket is closed.
             f.channel().closeFuture().sync();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             // Shut down all event loops to terminate all threads.
             dbHelper.disconnectDb();
             bossGroup.shutdownGracefully();
