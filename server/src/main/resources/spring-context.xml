@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="java"/>
+
+    <!--<bean id="fileServer" class="FileServer">-->
+    <!--    <constructor-arg ref="dbHelper"/>-->
+    <!--    <constructor-arg ref="fileServerHandler"/>-->
+    <!--</bean>-->
+
+    <bean id="fileServerHandler" class="FileServerHandler">
+        <constructor-arg ref="dbHelper"/>
+    </bean>
+
+    <bean id="dbHelper" class="DataBase.DBHelper">
+    </bean>
+
+</beans>
