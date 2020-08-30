@@ -47,7 +47,7 @@ import org.springframework.stereotype.Component;
  * Server that accept the path of a file an echo back its content.
  */
 
-
+@Component
 public final class FileServer {
 
 
@@ -59,6 +59,7 @@ public final class FileServer {
     @Autowired
     private DBHelper dbHelper;
 
+    @Autowired
     public FileServer(DBHelper dbHelper, FileServerHandler fileServerHandler) {
         this.dbHelper = dbHelper;
         this.fileServerHandler = fileServerHandler;
