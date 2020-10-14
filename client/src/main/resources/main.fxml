@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+      prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="NettyClientWindowController">
+    <children>
+        <MenuBar>
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Settings"/>
+                        <MenuItem mnemonicParsing="false" text="Register"/>
+                        <MenuItem mnemonicParsing="false" text="Login"/>
+                        <MenuItem mnemonicParsing="false" text="Logout"/>
+                        <MenuItem mnemonicParsing="false" onAction="#menuItemFileExitAction" text="Close"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Unspecified Menu">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <HBox prefHeight="530.0" prefWidth="1024.0">
+            <children>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="510.0" prefWidth="512.0">
+                    <children>
+                        <Label layoutX="82.0" layoutY="6.0" text="Server Side"/>
+                        <ListView fx:id="serverFilesList" layoutX="1.0" onMouseClicked="#serverFilesListClicked"
+                                  layoutY="23.0" prefHeight="510.0" prefWidth="510.0" VBox.vgrow="ALWAYS"/>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="510.0" prefWidth="512.0">
+                    <children>
+                        <Label layoutX="119.0" layoutY="6.0" text="Client Side"/>
+                        <ListView fx:id="clientFilesList" layoutY="23.0" onMouseClicked="#clientFilesListClicked"
+                                  prefHeight="510.0" prefWidth="510.0" VBox.vgrow="ALWAYS"/>
+                    </children>
+                </AnchorPane>
+            </children>
+        </HBox>
+        <ButtonBar buttonMinWidth="0.0" prefHeight="30.0" prefWidth="200.0">
+            <buttons>
+                <Button mnemonicParsing="false" onAction="#buttonDirectoryCreateAction" text="Создать папку" focusTraversable="false"/>
+                <Button mnemonicParsing="false" onAction="#buttonRenameAction" text="Переименовать" focusTraversable="false"/>
+                <Button mnemonicParsing="false" onAction="#buttonFileSendAction" text="Отправить" focusTraversable="false"/>
+                <Button mnemonicParsing="false" onAction="#buttonFileDeleteAction" text="Удалить" focusTraversable="false"/>
+            </buttons>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </padding>
+        </ButtonBar>
+    </children>
+</VBox>
